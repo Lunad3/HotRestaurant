@@ -11,8 +11,24 @@
     <form>
         First name:
         <br>
-        <input type="text" name="name" value="Mickey">
-        <input type="submit" value="Submit">
+        <input type="text" id="name">
+        <!-- <input type="text" id="seats"> -->
+        <input type="submit" value="Submit" id="sbmtBtn">
       </form>
-    </body>
+
+    <script type="text/javascript">
+     $("#sbmtBtn").on("click", function(event) {
+      event.preventDefault();
+        var newReservation = {
+            name: $("#name").val().trim()
+            // ,seats: $("#seats").val().trim()
+        }
+        $.post("/api/reservations", newReservation)
+        .then(function(data) {
+            console.log(data);
+            alert("Adding reservation...");
+        });
+    });
+      </Script>
+      </body>
 </html>

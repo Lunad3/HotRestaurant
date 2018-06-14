@@ -9,6 +9,14 @@
 <body>
     <button type="button"><a href = "index.html">Home</a></button>
     <ul id="reservationList">
-    </ul>    
+    </ul>
+    <script type="text/javascript">
+        $.get("/api/reservations", function(data) {
+          for (var i = 0; i < data.length; i++) {
+              var resName = $("li").text(data[i].name);
+              $("#reservationList").append(resName);
+          }
+        });
+      </script>    
 </body>
 </html>
